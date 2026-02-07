@@ -1,0 +1,44 @@
+# Environment variables
+.env
+
+# Database data
+db-data/
+
+# Minecraft server generated files and data
+minecraft-data/logs/
+minecraft-data/world/
+minecraft-data/world_nether/
+minecraft-data/world_the_end/
+minecraft-data/cache/
+minecraft-data/libraries/
+minecraft-data/*.jar # Server JAR files (e.g., paper-*.jar)
+minecraft-data/plugins/*.jar # Plugin JAR files
+minecraft-data/usercache.json
+minecraft-data/banned-ips.json
+minecraft-data/banned-players.json
+minecraft-data/ops.json
+minecraft-data/whitelist.json
+minecraft-data/version_history.json
+minecraft-data/plugins/AuraSkills/userdata/
+minecraft-data/plugins/Essentials/userdata/
+minecraft-data/plugins/Slimefun/cache/
+minecraft-data/plugins/Chunky/data/
+minecraft-data/.paper.env
+minecraft-data/.rcon-cli.env
+minecraft-data/.rcon-cli.yaml
+minecraft-data/.papermc-manifest.json
+minecraft-data/plugins/.paper-remapped/
+minecraft-data/plugins/51253.jar # This seems like a specific plugin jar, better to ignore if it's regenerated or temporary
+
+# Backups
+backups/
+
+# General ignores
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
