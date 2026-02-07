@@ -1,0 +1,7 @@
+mysql:
+  host: db
+  database: minecraft
+  username: minecraft
+  password: password13
+coins:
+  firstjoin: "10"

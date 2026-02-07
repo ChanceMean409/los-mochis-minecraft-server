@@ -1,0 +1,6 @@
+kits:
+  starter:
+    delay: -1
+    items:
+      - minecraft:enchanted_book 1 {components:{"minecraft:custom_data":{"PublicBukkitValues":{"slimefun:slimefun_guide_mode":"SURVIVAL_MODE"}}}}
+      - writtenbook 1 title:&l&6Guia_de_AuraSkills author:ServerAdmin lore:Aprende_tus_habilidades book:AuraSkillsGuide

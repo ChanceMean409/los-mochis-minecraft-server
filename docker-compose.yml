@@ -1,0 +1,75 @@
+version: "3.8"
+
+services:
+  # Servicio Principal: Minecraft Java con Paper
+  mc:
+    image: itzg/minecraft-server:java21 # Usar etiqueta específica de Java 21 para 1.20.6
+    container_name: mc-hybrid-core
+    hostname: mc-server
+    restart: unless-stopped
+    ports:
+      - "25565:25565"      # Puerto Java
+      - "19132:19132/udp"  # Puerto Bedrock (Geyser)
+      - "25575:25575"      # Puerto RCON
+    environment:
+      EULA: "TRUE"
+      VERSION: "1.20.6"
+      PAPER_BUILD: "151"
+      TYPE: "PAPER"
+      MEMORY: "8G"
+      RCON_PASSWORD: ${RCON_PASSWORD}
+      # Banderas de Aikar (Aikar's Flags): Optimizaciones de JVM estándar de la industria
+      JVM_OPTS: "-XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1"
+      # Configuración de Dificultad y Juego
+      DIFFICULTY: "hard"
+      VIEW_DISTANCE: 10
+      SIMULATION_DISTANCE: 6
+      MAX_PLAYERS: 20
+      MOTD: "§6Servidor Híbrido §bBedrock/Java §aSlimefun Survival"
+      # Auto-Instalación de Plugins Base desde Spiget (IDs de recursos)
+      SPIGET_RESOURCES: |
+        51253
+        52119
+        28140
+        81403
+        19063
+        34315
+    volumes:
+      - ./minecraft-data:/data # Persistencia de datos del mundo y plugins
+    # Límites de recursos para estabilidad del host
+    deploy:
+      resources:
+        limits:
+          cpus: "3.0" # Limitar a 4 hilos lógicos
+          memory: 10G # Límite duro del contenedor (2GB overhead sobre la JVM)
+    depends_on:
+      - db
+
+  # Servicio de Base de Datos (MariaDB)
+  db:
+    image: mariadb:10.6
+    container_name: mc-database
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
+      MYSQL_DATABASE: minecraft
+      MYSQL_USER: minecraft
+      MYSQL_PASSWORD: ${DB_PASS}
+    volumes:
+      - ./db-data:/var/lib/mysql
+    command: --max_connections=500
+
+  # Servicio de Backups Automatizados
+  backups:
+    image: itzg/mc-backup
+    container_name: mc-backup-service
+    restart: unless-stopped
+    environment:
+      BACKUP_INTERVAL: "24h" # Backup diario
+      PRUNE_BACKUPS_DAYS: 7 # Retener 7 días
+      RCON_PASSWORD: ${RCON_PASSWORD} # Para forzar guardado antes del backup
+    volumes:
+      - ./minecraft-data:/data:ro
+      - ./backups:/backups
+    depends_on:
+      - mc

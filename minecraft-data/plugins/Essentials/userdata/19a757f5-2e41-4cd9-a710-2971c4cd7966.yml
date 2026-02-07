@@ -1,0 +1,38 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+muted: false
+jailed: false
+ip-address: 172.18.0.1
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 0
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1770442224793
+  login: 1770442254352
+  kits:
+    chancemean409: 1770438928662
+    color: 1770438936348
+    dtools: 1770438946482
+    firework: 1770438955434
+    notch: 1770438970085
+    tools: 1770438976781
+    starter: 1770441594243
+money: '0'
+last-account-name: ChanceMean409
+logoutlocation:
+  world: 4a7c62fe-c4a7-43d6-9ad6-421ee1282560
+  world-name: world
+  x: 0.16459386785592314
+  y: 71.0
+  z: -13.462988407272851
+  yaw: -22.05096435546875
+  pitch: -7.949957847595215

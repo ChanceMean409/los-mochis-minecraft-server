@@ -1,0 +1,19 @@
+#AuraSkillsGuide
+&l&6Guia de AuraSkills&r
+
+&3Bienvenido al sistema
+&3de habilidades!
+
+&3Usa &6/skills &3para
+&3ver tu progreso.
+
+&3Usa &6/stats &3para
+&3tus estadisticas.
+
+&3Para detalles de una
+&3habilidad especifica,
+&3usa &6/<habilidad>&3,
+&3ej: &6/farming&3.
+
+&3Para ayuda general:
+&6/sk help&3.

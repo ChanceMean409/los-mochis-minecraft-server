@@ -1,0 +1,30 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+muted: false
+jailed: false
+ip-address: 172.18.0.1
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 0
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1770441962811
+  login: 1770440951974
+money: '0'
+last-account-name: .Richito1307
+logoutlocation:
+  world: 4a7c62fe-c4a7-43d6-9ad6-421ee1282560
+  world-name: world
+  x: 1.699989988079071
+  y: 71.0
+  z: -17.51248998807907
+  yaw: -92.70489501953125
+  pitch: -1.3943939208984375
